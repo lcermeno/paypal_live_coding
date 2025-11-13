@@ -6,10 +6,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class AuthRepositoryImpl: AuthRepository {
+
+    private val service = ApiServiceImpl()
+
     override fun login(credentials: Credentials): Flow<Boolean> {
         return flow {
-            val valid = credentials.password == "1234" && credentials.username == "lcermeno"
+            val valid = service.login(credentials)
             emit(valid)
         }
+    }
+}
+
+class ApiServiceImpl {
+
+    fun login(credentials: Credentials): Boolean {
+        return credentials.password == "1234" && credentials.username == "lcermeno"
     }
 }
