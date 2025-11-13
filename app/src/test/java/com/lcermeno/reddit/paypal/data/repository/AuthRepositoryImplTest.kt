@@ -11,7 +11,7 @@ import org.junit.Test
 class AuthRepositoryImplTest {
 
     private val apiService = mockk<ApiServiceImpl>()
-    private val repository = AuthRepositoryImpl()
+    private val repository = AuthRepositoryImpl(apiService)
 
     @Test
     fun `successful login`() = runTest {
