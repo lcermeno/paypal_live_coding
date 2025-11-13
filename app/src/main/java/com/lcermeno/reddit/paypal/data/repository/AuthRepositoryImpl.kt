@@ -5,9 +5,9 @@ import com.lcermeno.reddit.paypal.domain.repository.AuthRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AuthRepositoryImpl: AuthRepository {
-
-    private val service = ApiServiceImpl()
+class AuthRepositoryImpl(
+    private val service: ApiServiceImpl = ApiServiceImpl()
+): AuthRepository {
 
     override fun login(credentials: Credentials): Flow<Boolean> {
         return flow {
